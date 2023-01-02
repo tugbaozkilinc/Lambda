@@ -49,7 +49,7 @@ public class Lambda05 {
         return IntStream.iterate(1, t -> t+2).filter(t -> t%2!=0).limit(x).sum();
     }
 
-    // TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi create ediniz.
+    // TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi create ediniz..
     public static void findSquareOfTheNumber(int x){
         IntStream.iterate(2, t -> t*2).limit(x).forEach(Lambda01::print);
     }
