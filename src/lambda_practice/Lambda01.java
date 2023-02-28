@@ -32,51 +32,49 @@ public class Lambda01 {
         System.out.println(newPrintList(list));
         System.out.println(findSumOfTheList(list));
         findSumOfThePositiveElement(list);
-
     }
 
-    // S1: List i aralarinda bosluk birakarak yazdiriniz.
+    //S1: List i aralarinda bosluk birakarak yazdiriniz.
     public static void printList(List<Integer> l){
-        l.stream().forEach(t -> System.out.print(t + " "));
+        l.forEach(t -> System.out.print(t + " "));
     }
 
-    // S2: Sadece negatif olanlari yazdiriniz.
+    //S2: Sadece negatif olanlari yazdiriniz.
     public static void printOddElements(List<Integer> l){
         l.stream().filter(t -> t<0).forEach(t -> System.out.print(t + " "));
     }
 
-    // S3: Cift olanlardan yeni bir list olusturunuz.
+    //S3: Cift olanlardan yeni bir list olusturunuz.
     public static List<Integer> printEvenElements(List<Integer> l) {
-        List<Integer> newL = l.stream().filter(t -> t%2==0).collect(Collectors.toList());
-        return newL;
+        return l.stream().filter(t -> t%2==0).collect(Collectors.toList());
     }
 
-    // S4: Pozitif ve cift olanlari yazdiriniz.
+    //S4: Pozitif ve cift olanlari yazdiriniz.
     public static void printPositiveAndEven(List<Integer> l){
         l.stream().filter(t -> t>0 && t%2==0).forEach(t -> System.out.print(t + " "));
     }
 
-    // S5: Pozitif veya cift olanlari yazdiriniz.
+    //S5: Pozitif veya cift olanlari yazdiriniz.
     public static void printPositiveOrEven(List<Integer> l){
         l.stream().filter(t -> t>0 || t%2==0).forEach(t -> System.out.print(t + " "));
     }
 
-    // S6: List in elemanlarinin karelerini aynı satırda bir boslukla yazdıriniz.
+    //S6: List in elemanlarinin karelerini aynı satırda bir boslukla yazdıriniz.
     public static void printSquareOfElements(List<Integer> l){
         l.stream().map(t -> t*t).forEach(t -> System.out.print(t + " "));
     }
 
-    // S7: Listin cift elemanlarinin kuplerini aynı satirda yazdiriniz.
+    //S7: Listin cift elemanlarinin kuplerini aynı satirda yazdiriniz.
     public static void printCubeOfElements(List<Integer> l){
         l.stream().filter(t -> t%2==0).map(t -> t*t*t).forEach(t -> System.out.print(t + " "));
     }
 
-    // S8 : List in elemanlarinin karelerini tekrarsiz olarak yazdiriniz.
+    //S8 : List in elemanlarinin karelerini tekrarsiz olarak yazdiriniz.
     public static void printSquare(List<Integer> l){
         l.stream().map(t -> t*t).distinct().forEach(t -> System.out.print(t + " "));
     }
 
-    // S9: List in elemanlarini kucukten buyuge sıralayınız.
+    //S9: List in elemanlarini kucukten buyuge sıralayınız.
     public static void sortTheList(List<Integer> l){
         l.stream().sorted().forEach(t -> System.out.print(t + " "));
     }
@@ -86,23 +84,23 @@ public class Lambda01 {
         l.stream().sorted(Comparator.reverseOrder()).forEach(t -> System.out.print(t + " "));
     }
 
-    // S11: list pozitif elemanlari icn kuplerini bulup birler basamagi 5 olanlardan yeni bir list olusturalim
+    //S11: list pozitif elemanlari icin kuplerini bulup birler basamagi 5 olanlardan yeni bir list olusturalim
     public static List<Integer> newList(List<Integer> l){
         return l.stream().filter(t -> t>0).map(t -> t*t*t).filter(t -> t%10==5).collect(Collectors.toList());
     }
 
-    // S12: list pozitif elemanlarinin karelerini bulup birler basamagi 5 olmayanlardan yeni bir list olusturalim
+    //S12: list pozitif elemanlarinin karelerini bulup birler basamagi 5 olmayanlardan yeni bir list olusturalim
     public static List<Integer> newPrintList(List<Integer> l){
         return l.stream().filter(t -> t>0).map(t -> t*t).filter(t -> t%10!=5).collect(Collectors.toList());
     }
 
-    // S13: list elemanlarini toplamini bulalim
+    //S13: list elemanlarini toplamini bulalim
     public static Optional<Integer> findSumOfTheList(List<Integer> l){
-        Optional<Integer> sum = l.stream().reduce(Math::addExact); // Math::addExact Optional verir reduce(0, Math::addExact) yazarsan Optional dan kurtulursun.
+        Optional<Integer> sum = l.stream().reduce(Math::addExact); //Math::addExact Optional verir reduce(0, Math::addExact) yazarsan Optional dan kurtulursun.
         return sum;
     }
 
-    // S14: Listin pozitif elemanlarının toplamını bulalım.
+    //S14: Listin pozitif elemanlarının toplamını bulalım.
     public static void findSumOfThePositiveElement(List<Integer> l){
         System.out.println(l.stream().filter(t -> t>0).reduce(0, Integer::sum));
     }

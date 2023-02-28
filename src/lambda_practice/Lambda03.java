@@ -19,15 +19,14 @@ public class Lambda03 {
 
         sortedAccToRent(rentedFlats);
         System.out.println(listWithFloorMoreThanTwo(rentedFlats));
-
     }
 
-    // Example 1: Dogu cephesindeki kiralık daireleri kiralarına göre sıralayıniz.
+    //Example 1: Dogu cephesindeki kiralık daireleri kiralarına göre sıralayıniz.
     public static void sortedAccToRent(List<Apartment> c){
        c.stream().filter(t -> t.getFront().equalsIgnoreCase("east")).sorted(Comparator.comparing(Apartment::getRent)).forEach(System.out::println);
     }
 
-    // Example 2: Kat sayısı 2den cok olan dairelerin kiralarını listeleyın
+    //Example 2: Kat sayısı 2den cok olan dairelerin kiralarını listeleyın
     public static List<Integer> listWithFloorMoreThanTwo(List<Apartment> c){
         return c.stream().filter(t -> t.getFloorNumber()>2).map(t -> t.getRent()).collect(Collectors.toList());
     }

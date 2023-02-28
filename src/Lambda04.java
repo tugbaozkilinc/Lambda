@@ -28,43 +28,41 @@ public class Lambda04 {
         System.out.println(printTheNumberOfTheMath(university));
         System.out.println(findTheBiggestAveGrade(university));
         System.out.println(printTheSmallestAverageGrade(university));
-
-
     }
 
-    // Task 01: Universitelerin not ortalamalarinin 74'den buyuk oldugunu kontrol eden method create ediniz.
+    //Task 01: Universitelerin not ortalamalarinin 74'den buyuk oldugunu kontrol eden method create ediniz.
     public static boolean printAverageOfGrade(List<University> u){
         return u.stream().allMatch(t -> t.getAverageOfGrade()>74);
     }
 
-    // Task 02: Universitelerin herhangi birinin bolumunde "matematik" olup olmadigini  kontrol eden method create ediniz.
+    //Task 02: Universitelerin herhangi birinin bolumunde "matematik" olup olmadigini  kontrol eden method create ediniz.
     public static boolean checkIfIsTheMath(List<University> u){
         return u.stream().anyMatch(t -> t.getDepartment().toLowerCase().contains("math"));
     }
 
-    // Task 03: Universiteleri ogrenci sayilarina gore buyukten kucuge siralayiniz.
+    //Task 03: Universiteleri ogrenci sayilarina gore buyukten kucuge siralayiniz.
     public static List<University> sortAccToNumOfStd(List<University> u){
         return u.stream().sorted(Comparator.comparing(University::getNumOfStd).reversed()).collect(Collectors.toList());
-        // u.stream().sorted(Comparator.comparing(University::getNumOfStd).reversed()).forEach(System.out::println);
+        //u.stream().sorted(Comparator.comparing(University::getNumOfStd).reversed()).forEach(System.out::println);
 
     }
 
-    // Task 04: "matematik" bolumlerinin sayisini print ediniz.
+    //Task 04: "matematik" bolumlerinin sayisini print ediniz.
     public static int printTheNumberOfTheMath(List<University> u){
-        return (int) u.stream().filter(t -> t.getDepartment().contains("Math")).count(); // count() terminal operation
+        return (int) u.stream().filter(t -> t.getDepartment().contains("Math")).count(); //count() terminal operation
     }
 
-    // Task 05: Ogrenci sayilari 550'dan fazla olan universite'lerin en buyuk notOrt'unu bulunuz.
+    //Task 05: Ogrenci sayilari 550'dan fazla olan universite'lerin en buyuk notOrt'unu bulunuz.
     public static OptionalInt findTheBiggestAveGrade(List<University> u){
         return u.stream().filter(t -> t.getNumOfStd()>550).mapToInt(University::getAverageOfGrade).max();
-        // Tum Wrapper Class larin default degerleri null dir.
-        // u.stream().filter(t -> t.getNumOfStd() > 550).sorted(Comparator.comparing(University::getAverageOfGrade).reversed()).limit(1).forEach(t -> System.out.println(t.getAverageOfGrade()));
+        //Tum Wrapper Class larin default degerleri null dir.
+        //u.stream().filter(t -> t.getNumOfStd() > 550).sorted(Comparator.comparing(University::getAverageOfGrade).reversed()).limit(1).forEach(t -> System.out.println(t.getAverageOfGrade()));
     }
 
-    // Task 06: Ogrenci sayilari 1050'dan az olan universite'lerin en kucuk notOrt'unu bulunuz.
+    //Task 06: Ogrenci sayilari 1050'dan az olan universite'lerin en kucuk notOrt'unu bulunuz.
     public static OptionalInt printTheSmallestAverageGrade(List<University> u){
         return u.stream().filter(t -> t.getNumOfStd()<1050).mapToInt(University::getAverageOfGrade).min();
-        // u.stream().filter(t -> t.getNumOfStd()<1050).sorted(Comparator.comparing(University::getAverageOfGrade)).limit(1).forEach(t -> System.out.println(t.getAverageOfGrade()));
+        //u.stream().filter(t -> t.getNumOfStd()<1050).sorted(Comparator.comparing(University::getAverageOfGrade)).limit(1).forEach(t -> System.out.println(t.getAverageOfGrade()));
     }
 
 }

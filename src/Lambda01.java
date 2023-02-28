@@ -37,34 +37,32 @@ public class Lambda01 {
         printEvenBigFunctional(number);
         System.out.println();
         printEvenElFunctionalWithMethodReference(number);
-
-
     }
 
-    // TASK 1: "Structured Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
+    //TASK 1: "Structured Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
     public static void printElStructured(List<Integer> n){
         for(Integer w : n){
             System.out.print(w + " ");
         }
     }
 
-    // TASK 2: "Functional Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
+    //TASK 2: "Functional Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
     public static void printElFunctional(List<Integer> n){
-        n.stream().forEach(t -> System.out.print(t + " ")); // t -> System.out.print(t + " ") --> lambda expression / (t) or t
+        n.stream().forEach(t -> System.out.print(t + " ")); //t -> System.out.print(t + " ") --> lambda expression / (t) or t
     }
 
     public static void printElFunctional1(List<Integer> n){
         n.
                 stream().
-                forEach(System.out::print); // System.out::print --> method reference
-                                            // :: ilgili sınıftaki methodu çağırmamizi sağlıyor. "." ile çağırdığınız zaman o method çalışır ve kod durur ama
-                                            // :: ile çağırılında stream.API bunu akışa alır ve kod çalışmaya devam eder. Method chain yapabilirsin.
-                                            // Fakat "." ile method chain yapamazsin akis durur.
+                forEach(System.out::print); //System.out::print --> method reference
+                                            //:: ilgili sınıftaki methodu çağırmamizi sağlıyor. "." ile çağırdığınız zaman o method çalışır ve kod durur ama
+                                            //:: ile çağırılında stream.API bunu akışa alır ve kod çalışmaya devam eder. Method chain yapabilirsin.
+                                            //Fakat "." ile method chain yapamazsin akis durur.
     }
 
-    // Note: Lambda da lambda expression cok tercih edilmez, mumkun oldugu kadar method reference kullaniriz.
+    //Note: Lambda da lambda expression cok tercih edilmez, mumkun oldugu kadar method reference kullaniriz.
 
-    // Kendimiz bir method olusturalım ve bunu cagıralim
+    //Kendimiz bir method olusturalım ve bunu cagıralim
     public static void print(int a) { System.out.print(a + " "); }
     public static void print(String a){
         System.out.print(a + " ");
@@ -73,18 +71,18 @@ public class Lambda01 {
     public static void printElFunctional2(List<Integer> n){
         n.
                 stream().
-                forEach(Lambda01::print); // :: ile ilgili class taki methodu Stream API uzerinden cagirmis oluyorsun. Lambda fonksiyonlari class tan bagimsizdir,
-                                          // class tan bagimsiz sekilde kullanmak istiyorsan :: ile cagirmalisin
-                                          // Zaten "." ile cagirmak istersen senden parametre isteyecektir, fakat parametre akistan gelecegi icin parametreye yazacagimiz
-                                          // bir deger elimizde olmayacagindan dolayi bu sekilde kod calismayacaktir.
+                forEach(Lambda01::print); //:: ile ilgili class taki methodu Stream API uzerinden cagirmis oluyorsun. Lambda fonksiyonlari class tan bagimsizdir,
+                                          //class tan bagimsiz sekilde kullanmak istiyorsan :: ile cagirmalisin
+                                          //Zaten "." ile cagirmak istersen senden parametre isteyecektir, fakat parametre akistan gelecegi icin parametreye yazacagimiz
+                                          //bir deger elimizde olmayacagindan dolayi bu sekilde kod calismayacaktir.
     }
 
-    // TASK 3: Functional Programming ile list elemanlarinin  cift olanlarini ayni satirda aralarina bosluk birakarak print ediniz.
+    //TASK 3: Functional Programming ile list elemanlarinin  cift olanlarini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void printEvenElFunctional(List<Integer> n){
         n.stream().filter(t -> t%2==0).forEach(Lambda01::print);
     }
 
-    // Yukaridaki task in filter() kismini method reference ile yapalim.
+    //Yukaridaki task in filter() kismini method reference ile yapalim.
     public static boolean findEven(int a){
         return a%2==0;
     }
@@ -93,7 +91,7 @@ public class Lambda01 {
         n.stream().filter(Lambda01::findEven).forEach(Lambda01::print);
     }
 
-    // TASK 4: Structured Programming ile list elemanlarinin  cift olanlarini ayni satirda aralarina bosluk birakarak print ediniz.
+    //TASK 4: Structured Programming ile list elemanlarinin  cift olanlarini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void printEvenElStructured(List<Integer> n){
         for(Integer w : n){
             if(w%2==0){
@@ -102,7 +100,7 @@ public class Lambda01 {
         }
     }
 
-    // TASK 5: Functional Programming ile list elemanlarinin 34 den kucuk cift olanlarini ayni satirda aralarina bosluk birakarak print ediniz.
+    //TASK 5: Functional Programming ile list elemanlarinin 34 den kucuk cift olanlarini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void printEvenSmallFunctional(List<Integer> n){
         n.stream().filter(t -> t%2==0 && t<34).forEach(Lambda01::print);
     }
@@ -111,6 +109,5 @@ public class Lambda01 {
     public static void printEvenBigFunctional(List<Integer> n){
         n.stream().filter(t -> t%2==0 || t>34).forEach(Lambda01::print);
     }
-
 
 }
